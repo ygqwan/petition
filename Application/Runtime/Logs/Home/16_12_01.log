@@ -1,0 +1,318 @@
+[ 2016-12-01T00:27:07+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000069s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000787s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000779s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000911s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 142 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0041s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000873s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001013s ]
+
+[ 2016-12-01T00:27:28+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000513s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000769s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001023s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 142 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0034s ]
+SQL: INSERT INTO `news` (`title`) VALUES ('hehe') [ RunTime:0.0028s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001005s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001139s ]
+
+[ 2016-12-01T00:30:11+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000061s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000910s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000913s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001083s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 142 行.
+
+[ 2016-12-01T00:30:21+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000857s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000795s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000979s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 142 行.
+
+[ 2016-12-01T00:30:36+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000056s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001210s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000762s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000895s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 142 行.
+
+[ 2016-12-01T00:30:46+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000646s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000769s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000922s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 142 行.
+
+[ 2016-12-01T00:31:03+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000502s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001225s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001452s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 142 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0033s ]
+SQL: INSERT INTO `news` (`title`) VALUES ('hehe') [ RunTime:0.0021s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001542s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001814s ]
+
+[ 2016-12-01T00:31:25+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000447s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000680s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000818s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 143 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0033s ]
+SQL: INSERT INTO `news` (`title`) VALUES ('hehe') [ RunTime:0.0027s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000832s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001004s ]
+
+[ 2016-12-01T00:32:07+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000632s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000693s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000864s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 143 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0040s ]
+SQL: INSERT INTO `news` (`title`) VALUES ('hehe') [ RunTime:0.0034s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000870s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001039s ]
+
+[ 2016-12-01T00:33:13+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000556s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000786s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000953s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 143 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0038s ]
+SQL: INSERT INTO `news` (`title`) VALUES ('hehe') [ RunTime:0.0033s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001252s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001498s ]
+
+[ 2016-12-01T00:34:14+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000614s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000707s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000841s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0035s ]
+
+[ 2016-12-01T00:34:43+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000306s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001134s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001125s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001407s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0074s ]
+
+[ 2016-12-01T00:34:48+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000871s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001078s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001368s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0189s ]
+
+[ 2016-12-01T00:35:05+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000959s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001206s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001523s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0045s ]
+
+[ 2016-12-01T00:35:14+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000840s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001288s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001622s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0044s ]
+
+[ 2016-12-01T00:35:17+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000058s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000889s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001048s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001336s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0050s ]
+
+[ 2016-12-01T00:36:17+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000552s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000867s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001029s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0054s ]
+
+[ 2016-12-01T00:36:19+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000736s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001371s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001692s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0145s ]
+
+[ 2016-12-01T00:36:19+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000747s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000818s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000972s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0040s ]
+
+[ 2016-12-01T00:36:19+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000562s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000735s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000927s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0048s ]
+
+[ 2016-12-01T00:36:19+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000051s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000782s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001054s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001345s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0037s ]
+
+[ 2016-12-01T00:37:00+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000458s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000846s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 146 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0046s ]
+
+[ 2016-12-01T00:37:11+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000566s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000859s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001048s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 146 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0041s ]
+
+[ 2016-12-01T00:37:17+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000507s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000873s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001004s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 146 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0037s ]
+
+[ 2016-12-01T00:37:25+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000059s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000646s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001136s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001362s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 146 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0035s ]
+
+[ 2016-12-01T00:37:42+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000524s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000843s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000990s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 146 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0039s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\th\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto C:\wamp\www\th\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `news` (`title`) VALUES ('cao') [ RunTime:0.0021s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001387s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001632s ]
+
+[ 2016-12-01T00:38:03+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000458s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000812s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001038s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0035s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\th\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+
+[ 2016-12-01T00:38:17+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000483s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000960s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001262s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 145 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0043s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\th\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+
+[ 2016-12-01T00:38:30+08:00 ] ::1 /th/index.php/home/index/orm_val
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000729s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001730s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002039s ]
+NOTIC: [2048] Declaration of Home\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') C:\wamp\www\th\Application\Home\Controller\IndexController.class.php 第 146 行.
+SQL: SHOW COLUMNS FROM `news` [ RunTime:0.0042s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\th\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+
