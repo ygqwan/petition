@@ -17,23 +17,46 @@ class BaseController extends Controller {
     /*
      * 返回json
      */
-    public function json($status, $message, $response = array()) {
+    public function json($errcode = 1, $message = '', $response = array()) {
+        if ($message == '') {
+            $message = getErr($errcode);
+        }
         $r = array(
-            'status' => $status,
+            'status' => $errcode,
             'message' => $message,
             'response' => $response,
         );
         if( !isset($r["response"])) {
             unset($r['response']);
         }
+        header('Content-type: application/json');
         return json_encode($r);
     }
 
-    public function defaultSuccessJson($response) {
+    public function jsonFromModel($modelRes) {
+        return $this->json($modelRes['errcode'],
+            $modelRes['message'], $modelRes['response']);
+    }
+
+    public function defaultSuccessJson($response = array()) {
         return $this->json(1, "", $response);
     }
 
-    public function errorJson($status) {
-        return $this->json($status, C("errcode.$status"));
+    public function errorJson($errcode) {
+        return $this->json($errcode, C("errcode.$errcode"));
+    }
+
+    public function isAdmin() {
+       return in_array_case(
+           session(C('session.user')['email']),
+           C('admin_email')
+       );
+    }
+
+    public function needLogin() {
+        if(session(C('session.user')['email']) == ""){
+            echo $this->json(ERR_NO_LOGIN);
+            exit(1);
+        }
     }
 }

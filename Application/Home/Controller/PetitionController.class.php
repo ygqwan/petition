@@ -14,7 +14,13 @@ class PetitionController extends BaseController {
     }
 
     public function vote() {
-        echo $this->errorJson(101);
+        $this->needLogin();
+        $res = D('Vote')->vote(I('post.id'));
+        if(isValid($res)) {
+            echo $this->defaultSuccessJson();
+        }else {
+            echo $this->json($res['errcode'], $res['message'], $res['response']);
+        }
     }
 
     public function close() {
@@ -26,6 +32,9 @@ class PetitionController extends BaseController {
     }
 
     public function detail() {
+        $res = D("Petition")->petition(I("get.id"));
+        echo $this->jsonFromModel($res);
+        die;
         $petitionInfo = array(
             'petition' => array(
                 'id' => 1,
@@ -78,6 +87,9 @@ class PetitionController extends BaseController {
     }
 
     public function history() {
+        $res = D("Petition")->history();
+        echo $this->jsonFromModel($res);
+        die;
         $petitionInfoList = array(
             array(
                 'petition' => array(
