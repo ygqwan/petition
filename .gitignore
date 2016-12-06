@@ -2,5 +2,5 @@
 .gitignore
 .idea/
 ThinkPHP/Library/Think/Verify/zhttfs/
-./Application/Runtime
-./Application/Runtime/*
+Application/Runtime
+Application/Runtime/*
