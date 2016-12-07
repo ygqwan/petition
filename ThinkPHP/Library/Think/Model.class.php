@@ -1013,7 +1013,6 @@ class Model {
 
         // 状态
         $type = $type?:(!empty($data[$this->getPk()])?self::MODEL_UPDATE:self::MODEL_INSERT);
-
         // 检查字段映射
 		$data =	$this->parseFieldsMap($data,0);
 

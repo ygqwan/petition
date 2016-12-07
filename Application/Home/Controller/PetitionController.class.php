@@ -15,6 +15,10 @@ class PetitionController extends BaseController {
 
     public function vote() {
         $this->needLogin();
+        if(I('post.user_name') !== session(C('session.user')['username'])) {
+            echo $this->errorJson(-1, '非本人签字');
+            return;
+        }
         $res = D('Vote')->vote(I('post.id'));
         if(isValid($res)) {
             echo $this->defaultSuccessJson();
@@ -24,11 +28,15 @@ class PetitionController extends BaseController {
     }
 
     public function close() {
-        echo $this->errorJson(102);
+        $this->needLogin();
+        $res = D("Petition")->close(I('post.id'));
+        echo $this->jsonFromModel($res);
     }
 
-    public function start() {
-        echo $this->defaultSuccessJson();
+    public function launch() {
+        //$this->needLogin();
+        $res = D("Petition")->launch();
+        echo $this->jsonFromModel($res);
     }
 
     public function detail() {
@@ -37,12 +45,16 @@ class PetitionController extends BaseController {
     }
 
     public function running() {
-        $res = D("Petition")->running();
+        $offset = I('get.offset', 0, 'int');
+        $pageSize = C("page.page_size", null, 15);
+        $res = D("Petition")->running($offset, $pageSize);
         echo $this->jsonFromModel($res);
     }
 
     public function history() {
-        $res = D("Petition")->history();
+        $offset = I('get.offset', 0, 'int');
+        $pageSize = C("page.page_size", null, 15);
+        $res = D("Petition")->history($offset, $pageSize);
         echo $this->jsonFromModel($res);
     }
 }

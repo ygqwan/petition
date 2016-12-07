@@ -3,8 +3,16 @@ const ERR_SUCCESS = 1;
 const ERR_INVALID_PWD = 101;
 const ERR_NO_LOGIN = 102;
 const ERR_NOT_EXISTS_PETITION = 103;
+const ERR_VOTED = 104;
+
 const ERR_PARAM_ERROR = 401;
 const ERR_SERVER_ERROR = 500;
+
+const STATUS_PETITION_VOTING = 0;
+const STATUS_PETITION_DOING = 1;
+const STATUS_PETITION_CLOSED = 2;
+const STATUS_PETITION_FAILED = 3;
+
 return array(
 	'DB_TYPE'   => 'mysql', // 数据库类型
 	'DB_HOST'   => 'domob-206.domob-inc.cn', // 服务器地址
@@ -21,8 +29,10 @@ return array(
         ERR_INVALID_PWD => '错误的邮箱或者密码组合',
         ERR_NO_LOGIN => '用户未登录',
         ERR_NOT_EXISTS_PETITION => '不存在该请愿',
+        ERR_VOTED => '已经支持过了',
         ERR_PARAM_ERROR => '请求参数错误',
         ERR_SERVER_ERROR => '服务器错误',
+
     ),
     'ADMIN_EMAIL' => array(
         'zhuanghongli@domob.cn',
@@ -31,6 +41,9 @@ return array(
     'SESSION' => array(
         'user' => array(
             'email' => 'email',
+            'username' => 'username',
         ),
     ),
+    'default_vote_target' => 30,
+    'default_delay' => 15,
 );

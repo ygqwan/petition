@@ -13,6 +13,9 @@ use Think\Controller;
 class BaseController extends Controller {
     public function __construct(){
         parent::__construct();
+        //FIXME 默认登录了
+        session(C('session.user')['email'], 'luotonglong@domob.cn');
+        session(C('session.user')['username'], '罗同龙');
     }
     /*
      * 返回json
@@ -42,8 +45,11 @@ class BaseController extends Controller {
         return $this->json(1, "", $response);
     }
 
-    public function errorJson($errcode) {
-        return $this->json($errcode, C("errcode.$errcode"));
+    public function errorJson($errcode, $message='') {
+        if($message == '') {
+            $message = getErr($errcode);
+        }
+        return $this->json($errcode, $message);
     }
 
     public function isAdmin() {

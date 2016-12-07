@@ -17,7 +17,7 @@ class UserController extends BaseController {
 
     public function login() {
         session(C('session.user')['email'], 'luotonglong@domob.cn');
-        echo $this->json(0, "登录成功");
+        echo $this->json(0, "登录成功", D("Petition")->buildUserInfo()['response']);
     }
 
     public function myPetition() {
