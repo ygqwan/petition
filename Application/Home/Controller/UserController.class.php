@@ -10,8 +10,6 @@ namespace Home\Controller;
 use Think\Controller;
 
 require_once './ThinkPHP/Library/Vendor/phpCAS/source/CAS.php';
-require_once './ThinkPHP/Library/Vendor/phpCAS/source/CAS/Autoload.php';
-import("Vendor.phpCAS.source.CAS.phpCAS");
 class UserController extends BaseController {
     public function __construct() {
 
@@ -19,6 +17,8 @@ class UserController extends BaseController {
     }
 
     public function login() {
+        session(C('session.user')['email'], I('post.user_email'));
+        echo $this->json(0, "登录成功", D("Petition")->buildUserInfo()['response']);
         // Enable debugging
         \phpCAS::setDebug();
         // Enable verbose error messages. Disable in production!
@@ -43,6 +43,18 @@ class UserController extends BaseController {
         if (isset($_REQUEST['logout'])) {
             \phpCAS::logout();
         }
+        // Enable debugging
+        \phpCAS::setDebug();
+        // Enable verbose error messages. Disable in production!
+        \phpCAS::setVerbose(true);
+
+        // Initialize phpCAS
+        \phpCAS::client(CAS_VERSION_2_0, C('cas.host'), C('cas.port'), C('cas.context'));
+        \phpCAS::setNoCasServerValidation();
+
+        \phpCAS::logout();
+
+
     }
 
     public function myPetition() {

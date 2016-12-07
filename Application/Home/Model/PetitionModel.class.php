@@ -104,12 +104,14 @@ class PetitionModel extends BaseModel {
 
 
     private function _getPetitions($where = '', $offset = 0, $pageSize = 15) {
-        $ps = $this->where($where)->limit($offset, $pageSize)
+        $ps = $this->where($where)
+            ->limit($offset, $pageSize)
             ->order('id desc')
             ->select();
         $res = array('petition_info_list' =>array());
         foreach($ps as $p) {
-            array_push($res['petition_info_list'], $this->buildOnePetitionInfo($p));
+            array_push($res['petition_info_list'],
+                $this->buildOnePetitionInfo($p));
         }
         //$res['page_size'] = $pageSize;
         $res['next_offset'] = $offset + count($ps);

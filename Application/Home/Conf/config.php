@@ -49,6 +49,11 @@ return array(
         'context' => '/cas',
         'port' => 4443,
     ),
+    'EMAIL' => array(
+        'smtp_host' => '',
+        'smtp_port' => 33,
+        'smtp_'
+    ),
     'default_vote_target' => 30,
     'default_delay' => 15,
 );
