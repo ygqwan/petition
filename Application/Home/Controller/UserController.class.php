@@ -9,15 +9,40 @@
 namespace Home\Controller;
 use Think\Controller;
 
-
+require_once './ThinkPHP/Library/Vendor/phpCAS/source/CAS.php';
+require_once './ThinkPHP/Library/Vendor/phpCAS/source/CAS/Autoload.php';
+import("Vendor.phpCAS.source.CAS.phpCAS");
 class UserController extends BaseController {
     public function __construct() {
+
         parent::__construct();
     }
 
     public function login() {
-        session(C('session.user')['email'], 'luotonglong@domob.cn');
+        // Enable debugging
+        \phpCAS::setDebug();
+        // Enable verbose error messages. Disable in production!
+        \phpCAS::setVerbose(true);
+
+        // Initialize phpCAS
+        \phpCAS::client(CAS_VERSION_2_0, C('cas.host'), C('cas.port'), C('cas.context'));
+        \phpCAS::setNoCasServerValidation();
+
+        // force CAS authentication
+        \phpCAS::forceAuthentication();
+        if(\phpCAS::getUser() == '') {
+            echo $this->json(-1, '登录失败');
+            return;
+        }
+        session(C('session.user')['email'], \phpCAS::getUser());
         echo $this->json(0, "登录成功", D("Petition")->buildUserInfo()['response']);
+    }
+
+    public function logout() {
+        // logout if desired
+        if (isset($_REQUEST['logout'])) {
+            \phpCAS::logout();
+        }
     }
 
     public function myPetition() {

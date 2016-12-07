@@ -44,6 +44,11 @@ return array(
             'username' => 'username',
         ),
     ),
+    'CAS' => array(
+        'host' => 'sso.back.domob-inc.cn',
+        'context' => '/cas',
+        'port' => 4443,
+    ),
     'default_vote_target' => 30,
     'default_delay' => 15,
 );
