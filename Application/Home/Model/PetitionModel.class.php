@@ -100,17 +100,7 @@ class PetitionModel extends BaseModel {
     }
 
 
-    public function buildOnePetitionInfo($dbPetition) {
-        return array(
-            'petition_info' => array(
-                'petition' => $dbPetition,
-                'is_mine' => $dbPetition->owner === session(C('session.user')['email']),
-                'is_follower' => D("Vote")->boolIsFollower($dbPetition->pid, $dbPetition->user_email),
-                'expire_time_left' => 7,//FIXME
-                'vote_number_left' => 12, //FIXME
-            ),
-        );
-    }
+
 
     public function launch() {
         if($this->field('title,desc,owner,status,create_time,end_time,vote_target')->create()) {
@@ -134,6 +124,17 @@ class PetitionModel extends BaseModel {
         }
     }
 
+    public function buildOnePetitionInfo($dbPetition) {
+        return array(
+            'petition_info' => array(
+                'petition' => $dbPetition,
+                'is_mine' => $dbPetition->owner === session(C('session.user')['email']),
+                'is_follower' => D("Vote")->boolIsFollower($dbPetition->pid, $dbPetition->user_email),
+                'expire_time_left' => 7,//FIXME
+                'vote_number_left' => 12, //FIXME
+            ),
+        );
+    }
     private function _getPetitions($dbPetitions, $offset = 0, $pageSize = 15) {
         $res = array('petition_info_list' =>array());
         foreach($dbPetitions as $p) {

@@ -25,6 +25,7 @@ class UserController extends BaseController {
 
     public function login() {
         session(C('session.user')['email'], I('post.user_email'));
+        session(C('session.user')['username'], '麟');
         echo $this->json(1, "登录成功", D("Petition")->buildUserInfo()['response']);
         die;
         // Enable debugging
@@ -47,6 +48,9 @@ class UserController extends BaseController {
     }
 
     public function logout() {
+        session_destroy();
+        echo $this->json(1);
+        die;
         // logout if desired
         if (isset($_REQUEST['logout'])) {
             \phpCAS::logout();
@@ -61,8 +65,6 @@ class UserController extends BaseController {
         \phpCAS::setNoCasServerValidation();
 
         \phpCAS::logout();
-
-
     }
 
     public function petition() {
@@ -70,6 +72,14 @@ class UserController extends BaseController {
         $offset = I('get.offset', 0, 'int');
         $pageSize = C("page.page_size", null, 15);
         $res = D('Petition')->myOwner($offset, $pageSize);
+        echo $this->jsonFromModel($res);
+    }
+
+    public function voted() {
+        $this->needLogin();
+        $offset = I('get.offset', 0, 'int');
+        $pageSize = C("page.page_size", null, 15);
+        $res = D('Petition')->myVoted($offset, $pageSize);
         echo $this->jsonFromModel($res);
     }
 }
