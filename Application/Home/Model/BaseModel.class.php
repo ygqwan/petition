@@ -16,13 +16,23 @@ class BaseModel extends Model {
     public function username() {
         return session(C('session.user')['username']);
     }
+    public function isLogined() {
+        if(session(C('session.user')['email']) != "") {
+            return true;
+        }
+        return false;
+    }
     public function buildUserInfo() {
-        return model_res(ERR_SUCCESS, '', array(
-            'user_info' => array(
-                'user_email' => $this->email(),
-                'user_name' => $this->username(),
-                'is_admin' => false,
-            )
-        ));
+        if($this->isLogined()) {
+            return model_res(ERR_SUCCESS, '', array(
+                'user_info' => array(
+                    'user_email' => $this->email(),
+                    'user_name' => $this->username(),
+                    'is_admin' => false,
+                )
+            ));
+        }else {
+            return model_res(ERR_NO_LOGIN);
+        }
     }
 }

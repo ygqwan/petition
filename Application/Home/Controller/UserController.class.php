@@ -16,6 +16,13 @@ class UserController extends BaseController {
         parent::__construct();
     }
 
+    public function info() {
+        $userEmail = I('GET.user_email', '', 'string');
+        if($userEmail == ''){
+            echo $this->json(1, '', D("Petition")->buildUserInfo()['response']);
+        }
+    }
+
     public function login() {
         session(C('session.user')['email'], I('post.user_email'));
         echo $this->json(1, "登录成功", D("Petition")->buildUserInfo()['response']);
