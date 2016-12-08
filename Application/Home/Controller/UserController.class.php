@@ -58,7 +58,7 @@ class UserController extends BaseController {
 
     }
 
-    public function myPetition() {
+    public function petition() {
         $petitionInfoList = array(
             'petition_info' =>
                 array(
