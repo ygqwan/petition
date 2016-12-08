@@ -66,37 +66,9 @@ class UserController extends BaseController {
     }
 
     public function petition() {
-        $petitionInfoList = array(
-            'petition_info' =>
-                array(
-                    'petition' => array(
-                        'id' => 1,
-                        'title' => '请改善网络情况',
-                        'desc' => '希望改善网络情况',
-                        'owner' => 'luotonglong@domob.cn',
-                        'create_time' => '2016-12-06',
-                        'follower' => array('xuqian@domob.cn','lufugang@domob.cn'),
-                        'vote_num' => 100,
-                    ),
-                    'is_mine' => false,
-                    'is_follower' => true,
-                    'expire_time_left' => 1,
-                ),
-                array(
-                    'petition' => array(
-                        'id' => 2,
-                        'title' => '请改善网络情况2',
-                        'desc' => '希望改善网络情况2',
-                        'owner' => 'lufugang@domob.cn',
-                        'create_time' => '2016-12-06',
-                        'follower' => array('xuqian@domob.cn','luotonglong@domob.cn'),
-                        'vote_num' => 100,
-                    ),
-                    'is_mine' => true,
-                    'is_follower' => false,
-                    'expire_time_left' => 1,
-                ),
-        );
-        echo $this->json(1, "", $petitionInfoList);
+        $offset = I('get.offset', 0, 'int');
+        $pageSize = C("page.page_size", null, 15);
+        $res = D('Petition')->myOwner($offset, $pageSize);
+        echo $this->jsonFromModel($res);
     }
 }

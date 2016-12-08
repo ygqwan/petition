@@ -34,7 +34,7 @@ class PetitionController extends BaseController {
     }
 
     public function launch() {
-        //$this->needLogin();
+        $this->needLogin();
         $res = D("Petition")->launch();
         echo $this->jsonFromModel($res);
     }

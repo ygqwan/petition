@@ -53,4 +53,9 @@ class VoteModel extends BaseModel  {
         }
         return ! $this->where("id=$pid and email=$email")->find() === null;
     }
+    /*返回我推过票的id*/
+    public function myVotedId() {
+        return model_res(1, '',
+            $this->where("user_email='".$this->email()."'")->field('pid')->select());
+    }
 }

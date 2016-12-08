@@ -59,13 +59,44 @@ class PetitionModel extends BaseModel {
     }
 
     public function history($offset, $pageSize) {
-        return $this->_getPetitions('end_time <= ' . time(), $offset, $pageSize);
+        $ps = $this->where('end_time <= ' . time())
+            ->limit($offset, $pageSize)
+            ->order('id desc')
+            ->select();
+        return $this->_getPetitions($ps, $offset, $pageSize);
     }
 
     public function running($offset, $pageSize) {
-        return $this->_getPetitions('end_time > ' . time(), $offset, $pageSize);
+        $ps = $this->where('end_time > ' . time())
+            ->limit($offset, $pageSize)
+            ->order('id desc')
+            ->select();
+        return $this->_getPetitions($ps, $offset, $pageSize);
     }
 
+    public function myOwner($offset, $pageSize) {
+        $where = array(
+            'owner' => array('eq', $this->email()),
+        );
+        $ps = $this->where($where)
+            ->limit($offset, $pageSize)
+            ->order('id desc')
+            ->select();
+        $myP = $this->_getPetitions($ps, $offset, $pageSize);
+        return $myP;
+    }
+
+    public function myVoted($offset, $pageSize) {
+        $where = array(
+            'id' => array('in', "'".explode(',', D('Vote')->myVotedId())."'"),
+        );
+        $ps = $this->where($where)
+            ->limit($offset, $pageSize)
+            ->order('id desc')
+            ->select();
+        $myVote = $this->_getPetitions($ps, $offset, $pageSize);
+        return $myVote;
+    }
 
 
     public function buildOnePetitionInfo($dbPetition) {
@@ -102,20 +133,14 @@ class PetitionModel extends BaseModel {
         }
     }
 
-
-    private function _getPetitions($where = '', $offset = 0, $pageSize = 15) {
-        $ps = $this->where($where)
-            ->limit($offset, $pageSize)
-            ->order('id desc')
-            ->select();
+    private function _getPetitions($dbPetitions, $offset = 0, $pageSize = 15) {
         $res = array('petition_info_list' =>array());
-        foreach($ps as $p) {
+        foreach($dbPetitions as $p) {
             array_push($res['petition_info_list'],
                 $this->buildOnePetitionInfo($p));
         }
-        //$res['page_size'] = $pageSize;
-        $res['next_offset'] = $offset + count($ps);
-        $res['exists'] = count($ps) == $pageSize;
+        $res['next_offset'] = $offset + count($dbPetitions);
+        $res['exists'] = count($dbPetitions) == $pageSize;
         return model_res(ERR_SUCCESS, '', $res);
     }
 
