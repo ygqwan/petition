@@ -18,7 +18,8 @@ class UserController extends BaseController {
 
     public function login() {
         session(C('session.user')['email'], I('post.user_email'));
-        echo $this->json(0, "登录成功", D("Petition")->buildUserInfo()['response']);
+        echo $this->json(1, "登录成功", D("Petition")->buildUserInfo()['response']);
+        die;
         // Enable debugging
         \phpCAS::setDebug();
         // Enable verbose error messages. Disable in production!
