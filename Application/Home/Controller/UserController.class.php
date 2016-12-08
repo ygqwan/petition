@@ -66,6 +66,7 @@ class UserController extends BaseController {
     }
 
     public function petition() {
+        $this->needLogin();
         $offset = I('get.offset', 0, 'int');
         $pageSize = C("page.page_size", null, 15);
         $res = D('Petition')->myOwner($offset, $pageSize);

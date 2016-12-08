@@ -22,6 +22,15 @@ class BaseModel extends Model {
         }
         return false;
     }
+    public function needLogin() {
+        if (!$this->isLogined()) {
+            header('Content-type: application/json');
+            echo json_encode(
+                array('status' => ERR_NO_LOGIN, getErr(ERR_NO_LOGIN))
+            );
+            exit();
+        }
+    }
     public function buildUserInfo() {
         if($this->isLogined()) {
             return model_res(ERR_SUCCESS, '', array(

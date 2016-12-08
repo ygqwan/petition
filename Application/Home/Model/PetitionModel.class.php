@@ -49,7 +49,6 @@ class PetitionModel extends BaseModel {
         return ! ($this->find($pid) === null);
     }
 
-
     public function petition($pid) {
         $res = $this->find($pid);
         if($res === null) {
@@ -75,6 +74,7 @@ class PetitionModel extends BaseModel {
     }
 
     public function myOwner($offset, $pageSize) {
+        $this->needLogin();
         $where = array(
             'owner' => array('eq', $this->email()),
         );
@@ -87,6 +87,7 @@ class PetitionModel extends BaseModel {
     }
 
     public function myVoted($offset, $pageSize) {
+        $this->needLogin();
         $where = array(
             'id' => array('in', "'".explode(',', D('Vote')->myVotedId())."'"),
         );
