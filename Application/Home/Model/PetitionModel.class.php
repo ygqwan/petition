@@ -115,6 +115,7 @@ class PetitionModel extends BaseModel {
         }
         //$res['page_size'] = $pageSize;
         $res['next_offset'] = $offset + count($ps);
+        $res['exists'] = count($ps) == $pageSize;
         return model_res(ERR_SUCCESS, '', $res);
     }
 
