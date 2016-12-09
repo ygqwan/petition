@@ -5,7 +5,8 @@
  * Date: 2016/12/6
  * Time: 21:55
  */
-
+require_once "./ThinkPHP/Library/Vendor/PHPMailer/class.phpmailer.php";
+require_once "./ThinkPHP/Library/Vendor/PHPMailer/class.smtp.php";
 function model_res($errcode = 1, $message = '', $res = array()) {
     if($message == '') {
         $message = getErr($errcode);
@@ -32,31 +33,42 @@ function getErr($errcode) {
 function isValid($res) {
     return !isset($res['errcode']) || $res['errcode'] == ERR_SUCCESS;
 }
-    //发邮件
-function sendemail($to,$title,$body){
-    header("content-type:text/html;charset=utf-8");
-    ini_set("magic_quotes_runtime",0);
-    try {
-        require_once './ThinkPHP/Library/Vendor/PHPMailer/class.phpmailer.php';
-        $mail = new \PHPMailer;
-        $mail->IsSMTP();
-        $mail->CharSet='UTF-8'; //设置邮件的字符编码，这很重要，不然中文乱码
-        $mail->SMTPAuth = true; //开启认证
-        $mail->Port = C('email.smtp_port');
-        $mail->Host = C('email.smtp_host');
-        $mail->Username = $info['smtp_user'];
-        $mail->Password = $info['smtp_pass'];
-        $mail->AddReplyTo($info['smtp_user'],$info['send_name']);//回复地址
-        $mail->From = $info['smtp_user'];
-        $mail->FromName = $info['send_name'];
-        $mail->AddAddress($to);
-        $mail->Subject = $title;
-        $mail->Body = $body;
-        $mail->WordWrap = 80; // 设置每行字符串的长度
-        $mail->IsHTML(true);
-        $mail->Send();
-        return true;
-    } catch (phpmailerException $e) {
-        echo "邮件发送失败：".$e->errorMessage();
+
+
+
+/*
+ * @desc 发送邮件
+ * @param mailinfo array
+ *  => from string 发送人邮箱地址
+ *  => pwd string 发送人邮箱的密码
+ *  => to array string 收件人邮箱地址
+ *  => title 邮件主题
+ *  => content 邮件内容
+ * @return boolean 如果发送成功，返回true
+ */
+function send_mail($mailinfo) {
+    $mail = new \PHPMailer;
+
+    $mail->isSMTP();
+    $mail->Host = 'smtp.domob.cn';
+    $mail->SMTPAuth = true;
+    $mail->Username = $mailinfo['from'];
+    $mail->Password = $mailinfo['pwd'];
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
+
+    $mail->setFrom($mailinfo['from']);
+    foreach($mailinfo['to'] as $to) {
+        $mail->addAddress($to);
     }
+
+    $mail->CharSet = "UTF-8";
+    $mail->IsHTML(false);
+
+    $mail->Body = $mailinfo['content'];
+    $mail->Subject = $mailinfo['title'];
+    if ($mail->send()){
+        return true;
+    }
+    return $mail;
 }

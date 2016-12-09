@@ -19,7 +19,7 @@ class PetitionController extends BaseController {
             echo $this->errorJson(-1, '非本人签字');
             return;
         }
-        $res = D('Vote')->myVoted(I('post.id'));
+        $res = D('Vote')->vote(I('post.id'));
         if(isValid($res)) {
             echo $this->defaultSuccessJson();
         }else {

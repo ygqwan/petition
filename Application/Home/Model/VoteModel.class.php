@@ -41,10 +41,19 @@ class VoteModel extends BaseModel  {
         );
         if($this->field('pid,user_email,vote_time,status')->create($vote, 1)) {
             $this->add();
+            D("petition")->boolChangeStatus($pid);
             return model_res(array(), ERR_SUCCESS);
         }else {
             return model_res(-1, $this->getError());
         }
+    }
+
+    public function votedCnt($pid) {
+        if($pid == '') {
+            return 0;
+        }
+
+        return $this->where("pid=$pid")->count();
     }
 
     public function boolIsFollower($pid, $email = '') {

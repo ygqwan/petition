@@ -82,4 +82,24 @@ class UserController extends BaseController {
         $res = D('Petition')->myVoted($offset, $pageSize);
         echo $this->jsonFromModel($res);
     }
+
+    public function mail() {
+        $mailinfo = array(
+            'from' => 'luotonglong@domob.cn',
+            'pwd' => '???', //我的密码
+            'to' => array('huanglele@domob.cn','1026558548@qq.com','915116900@qq.com'),
+            'title' => '测试邮件',
+            'content' => '不服么，你打我啊',
+        );
+        $res = send_mail($mailinfo);
+        if ($res === true) {
+            echo $this->json(1);
+        }else {
+            echo $this->json(-1, $res->ErrorInfo);
+        }
+    }
+
+    public function mm() {
+       ;;
+    }
 }

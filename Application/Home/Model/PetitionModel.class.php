@@ -31,7 +31,7 @@ class PetitionModel extends BaseModel {
     protected $_auto = array(
         array('create_time', 'time', self::MODEL_INSERT, 'function'),
         array('end_time', '_endTime', self::MODEL_INSERT, 'callback'),
-        array('status','1', self::MODEL_INSERT),
+        array('status',STATUS_PETITION_VOTING, self::MODEL_INSERT),
         array('vote_target', '_voteTarget', self::MODEL_INSERT, 'callback'),
         array('owner', 'email', 1, 'callback'),
      );
@@ -99,6 +99,20 @@ class PetitionModel extends BaseModel {
         return $myVote;
     }
 
+    public function boolChangeStatus($pid, $status = null) {
+        $petition = $this->petition($pid);
+        if($petition['errcode'] != 1) {
+            return false;
+        }
+        if($status == null) {
+            if(D('vote')->votedCnt($pid) >= $petition['response']['petition_info']['vote_target']) {
+                $petition['response']['petition_info']['status'] = STATUS_PETITION_NOTIFYING;
+            }
+        }
+        $this->where("id=$pid")->save($petition['response']['petition_info']);
+        return true;
+    }
+
 
 
 
@@ -122,6 +136,32 @@ class PetitionModel extends BaseModel {
         }else {
             return model_res(-1, '之前已经被close过了');
         }
+    }
+
+    public function getShouldEmailPetition() {
+        $res = M("")->query("SELECT p.id FROM  petition p JOIN ( SELECT v.pid AS pid,count(v.pid) AS cnt FROM vote v GROUP BY v.pid) AS v2 ON v2.pid = p.id WHERE v2.cnt >= p.vote_target");
+        $ids = "(";
+        foreach($res as $i => $arr) {
+            $ids .= $arr['id'];
+            if($i != count($res) - 1) {
+                $ids .= ",";
+            }
+        }
+        $ids .= ")";
+        if(strlen($ids) < 3) {
+            return array();
+        }
+
+        $res = M("")->query("select pid, user_email from vote where pid in $ids group by pid, user_email");
+        $pidToUsers = array();
+        foreach($res as $pair) {
+            if(isset($pidToUsers[$pair['pid']])) {
+                array_push($pidToUsers[$pair['pid']], $pair['user_email']);
+            }else{
+                $pidToUsers[$pair['pid']] = array($pair['user_email']);
+            }
+        }
+        return $pidToUsers;
     }
 
     public function buildOnePetitionInfo($dbPetition) {
