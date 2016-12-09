@@ -76,9 +76,10 @@ class UserController extends BaseController {
         \phpCAS::client(CAS_VERSION_2_0, C('cas.host'), C('cas.port'), C('cas.context'));
         \phpCAS::setNoCasServerValidation();
 
+        session_destroy();
         \phpCAS::logout();
 
-        session_destroy();
+
         header("Location:". urldecode(I('get.u')));
     }
 
