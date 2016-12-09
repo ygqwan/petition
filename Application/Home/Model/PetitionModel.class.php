@@ -224,7 +224,7 @@ class PetitionModel extends BaseModel {
                 $this->buildOnePetitionInfo($p));
         }
         $res['next_offset'] = $offset + count($dbPetitions);
-        $res['exists'] = count($dbPetitions) == $pageSize;
+        $res['is_exists'] = count($dbPetitions) == $pageSize;
         return model_res(ERR_SUCCESS, '', $res);
     }
 
