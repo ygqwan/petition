@@ -155,6 +155,17 @@ class PetitionModel extends BaseModel {
         $dbReply = M("petition_reply");
         if($dbReply->create($reply)) {
             $dbReply->add();
+			//向数据库中插入一条发邮件的数据
+			$vote = D('vote')->where("pid=$pid")->select();
+			$myreceiver = array();
+			foreach($vote as $myvote){
+				array_push($myreceiver, $myvote['user_email']);
+			}
+			$copyto = $this->arrayToString(C('ADMIN_EMAIL'));
+			$receiver = $this->arrayToString($myreceiver);
+			$title = $this->where("id=$pid")->getField('title');
+			$desc = $this->where("id=$pid")->getField('desc');
+			$this->emailToSave($pid, $title, $desc, $receiver, $copyto);
             return model_res(ERR_SUCCESS);
         }else{
             return model_res(-1, $dbReply->getDbError());
@@ -224,5 +235,29 @@ class PetitionModel extends BaseModel {
     public function _voteTarget() {
         return C('default_vote_target');
     }
+
+	public function emailToSave($pid, $title, $desc, $receiver, $copyto){
+		$email = M('email_to_send');
+		$data['pid'] = $pid;
+		$data['title'] = $title;
+		$data['desc'] = $desc;
+		$data['receiver'] = $receiver;
+		$data['copyto'] = $copyto;
+		$data['create_time'] = time();
+		$data['sent_status'] = 0;
+		$email->add($data);
+	}
+
+	public function arrayToString($myarray){
+		$mystring = "";
+		foreach($myarray as $my){
+			if ($mystring == "")
+				$mystring = $my;
+			else
+				$mystring .= ",".$my;
+		}
+		return $mystring;
+		
+	}
 
 }
