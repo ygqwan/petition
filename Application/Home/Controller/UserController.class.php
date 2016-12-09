@@ -51,7 +51,10 @@ class UserController extends BaseController {
             session(C('session.user')['username'], $this->getUserName());
             session(C('session.user')['use_sso'], false);
         }
-        echo $this->json(1, "登录成功", D("Petition")->buildUserInfo()['response']);
+
+        header("Location:". urldecode(I('get.u')));
+        //登录成功后
+        //echo $this->json(1, "登录成功", D("Petition")->buildUserInfo()['response']);
     }
 
     public function logout() {
