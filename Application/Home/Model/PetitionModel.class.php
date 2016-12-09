@@ -179,6 +179,7 @@ class PetitionModel extends BaseModel {
                 'is_follower' => D("Vote")->boolIsFollower($dbPetition->pid, $dbPetition->user_email),
                 'expire_time_left' => $dbPetition['end_time'] - time() > 0 ? $dbPetition['end_time'] - time() : 0,
                 'voted_number' => D('vote')->votedCnt($dbPetition['id']),
+                'url' => './index.php?s=home/petition/detail/id/'.$dbPetition['id'],
             ),
         );
     }
