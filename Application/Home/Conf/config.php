@@ -50,6 +50,8 @@ return array(
     'ADMIN_EMAIL' => array(
         'zhuanghongli@domob.cn',
         'dengwei@domob.cn',
+        'luotonglong@domob.cn',
+        'zhangyan@domob.cn',
     ),
     'SESSION' => array(
         'user' => array(

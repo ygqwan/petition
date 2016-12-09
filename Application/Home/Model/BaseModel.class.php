@@ -23,7 +23,10 @@ class BaseModel extends Model {
         return false;
     }
     public function isAdmin($email = '') {
-        return true;
+        if($email == '') {
+            $email = $this->email();
+        }
+        return in_array($email, C('ADMIN_EMAIL'));
     }
     public function needLogin() {
         if (!$this->isLogined()) {
