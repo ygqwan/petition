@@ -66,7 +66,8 @@ class UserController extends BaseController {
             header("Location:". urldecode(I('get.u')));
             return;
         }
-        session_destroy();
+        unset($_SESSION[C('session.user')['email']]);
+        unset($_SESSION[C('session.user')['username']]);
 
         // Enable debugging
         \phpCAS::setDebug();
