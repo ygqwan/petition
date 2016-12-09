@@ -66,6 +66,7 @@ class UserController extends BaseController {
             header("Location:". urldecode(I('get.u')));
             return;
         }
+        session_destroy();
 
         // Enable debugging
         \phpCAS::setDebug();
@@ -76,7 +77,7 @@ class UserController extends BaseController {
         \phpCAS::client(CAS_VERSION_2_0, C('cas.host'), C('cas.port'), C('cas.context'));
         \phpCAS::setNoCasServerValidation();
 
-        session_destroy();
+
         \phpCAS::logout();
 
 
