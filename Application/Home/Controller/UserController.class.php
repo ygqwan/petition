@@ -62,11 +62,11 @@ class UserController extends BaseController {
     }
 
     public function logout() {
-
-        // logout if desired
-        if (isset($_REQUEST['logout'])) {
-            \phpCAS::logout();
+        if(!$this->isLogined()) {
+            header("Location:". urldecode(I('get.u')));
+            return;
         }
+
         // Enable debugging
         \phpCAS::setDebug();
         // Enable verbose error messages. Disable in production!
@@ -79,7 +79,7 @@ class UserController extends BaseController {
         \phpCAS::logout();
 
         session_destroy();
-        $this->json(1);
+        header("Location:". urldecode(I('get.u')));
     }
 
     public function petition() {
