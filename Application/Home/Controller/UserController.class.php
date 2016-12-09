@@ -17,10 +17,8 @@ class UserController extends BaseController {
     }
 
     public function info() {
-        $userEmail = I('GET.user_email', '', 'string');
-        if($userEmail == ''){
-            echo $this->json(1, '', D("Petition")->buildUserInfo()['response']);
-        }
+        echo $this->jsonFromModel(D("Petition")->buildUserInfo()['response']);
+        //echo $this->json(1, '', D("Petition")->buildUserInfo()['response']);
     }
 
     public function login() {
