@@ -57,12 +57,11 @@ class PetitionModel extends BaseModel {
         return model_res(ERR_SUCCESS, '', $this->buildOnePetitionInfo($res));
     }
 
-    public function history($offset, $pageSize) {
-        $ps = $this->where('end_time <= ' . time())
-            ->limit($offset, $pageSize)
-            ->order('id desc')
-            ->select();
-        return $this->_getPetitions($ps, $offset, $pageSize);
+    public function history($offset = 0, $pageSize = 15) {
+        //已经被回应过的就是历史
+        $pids = M("")->query("select pid from petition_reply group by pid order by create_time desc limit $offset, $pageSize");
+        $dbPetitions = $this->getPetitionByPids($pids);
+        return $this->_getPetitions($dbPetitions, $offset, $pageSize);
     }
 
     public function running($offset, $pageSize) {
@@ -172,6 +171,25 @@ class PetitionModel extends BaseModel {
         }
     }
 
+    public function getPetitionByPids($pids = array()) {
+        //print_r($pids);die;
+        $arrPids = array();//一维
+        if(is_array($pids[0])) {
+            foreach($pids as $v) {
+                if(isset($v['pid'])) {
+                    $arrPids []= $v['pid'];
+                }else if(isset($v['id'])){
+                    $arrPids []= $v['id'];
+                }
+            }
+        } else{
+            $arrPids = $pids;
+        }
+        $strPids = implode(',', $arrPids);
+        $strPids = '('.$strPids.')';
+        return $this->where(array('id' => array('in', $strPids)))->select();
+    }
+
     public function getShouldEmailPetition() {
         $res = M("")->query("SELECT p.id FROM  petition p JOIN ( SELECT v.pid AS pid,count(v.pid) AS cnt FROM vote v GROUP BY v.pid) AS v2 ON v2.pid = p.id WHERE v2.cnt >= p.vote_target");
         $ids = "(";
@@ -199,7 +217,6 @@ class PetitionModel extends BaseModel {
     }
 
     public function buildOnePetitionInfo($dbPetition) {
-
         $userInfo = array(
             'user_email' => $dbPetition['owner'],
             'user_name' => D("user")->stringGetUsernameFromEmail($dbPetition['owner']),
