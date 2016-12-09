@@ -41,6 +41,17 @@ class VoteModel extends BaseModel  {
         );
         if($this->field('pid,user_email,vote_time,status')->create($vote, 1)) {
             $this->add();
+			//判断是否达到投满的数目
+			$num = M('vote')->where("pid=$pid")->count();
+			if($num >= C('default_vote_target')){
+				$mypetition = M('petition')->where("id=$pid")->select()[0];
+				$title = $mypetition['title'];
+				$desc = $mypetition['desc'];
+				$receiver = D('Petition')->arrayToString(C('ADMIN_EMAIL'));
+				$copyto = $mypetition['owner'];
+				D('Petition')->emailToSave($pid, $title, $desc, $receiver, $copyto);
+			}
+			
             D("petition")->boolChangeStatus($pid);
             return model_res(array(), ERR_SUCCESS);
         }else {

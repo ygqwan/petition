@@ -15,7 +15,7 @@ class BaseController extends Controller {
         parent::__construct();
         //FIXME 默认登录了
         session(C('session.user')['email'], 'luotonglong@domob.cn');
-        #session(C('session.user')['username'], '罗同龙');
+        session(C('session.user')['username'], '罗同龙');
 		//$user_name = $this->getUserName();
 		//session(C('session.user')['username'], $user_name);
     }
