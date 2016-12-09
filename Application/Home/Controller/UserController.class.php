@@ -17,8 +17,7 @@ class UserController extends BaseController {
     }
 
     public function info() {
-        echo $this->jsonFromModel(D("Petition")->buildUserInfo()['response']);
-        //echo $this->json(1, '', D("Petition")->buildUserInfo()['response']);
+        echo $this->jsonFromModel(D("Petition")->buildUserInfo());
     }
 
     public function login() {
