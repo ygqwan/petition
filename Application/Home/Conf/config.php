@@ -17,6 +17,14 @@ const STATUS_PETITION_CLOSED = 3;
 const STATUS_PETITION_FAILED = 4;
 
 return array(
+	'DB2_USERINFO' => array(
+    	'db_type'  => 'mysql',
+   		'db_user'  => 'domob',
+   	 	'db_pwd'   => 'domob',
+   	 	'db_host'  => 'dbm.office.domob-inc.cn',
+   	 	'db_port'  => '3306',
+   	 	'db_name'  => 'first_blood_user'
+	),
 	'DB_TYPE'   => 'mysql', // 数据库类型
 	'DB_HOST'   => 'domob-206.domob-inc.cn', // 服务器地址
 	'DB_NAME'   => 'firstblood_petition', // 数据库名
@@ -36,6 +44,7 @@ return array(
         ERR_VOTED => '已经支持过了',
         ERR_PARAM_ERROR => '请求参数错误',
         ERR_SERVER_ERROR => '服务器错误',
+		ERR_REALNAME => '签名与真实姓名不符',
 
     ),
     'ADMIN_EMAIL' => array(
