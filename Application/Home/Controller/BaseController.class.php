@@ -15,7 +15,9 @@ class BaseController extends Controller {
         parent::__construct();
         //FIXME 默认登录了
         session(C('session.user')['email'], 'luotonglong@domob.cn');
-        session(C('session.user')['username'], '罗同龙');
+        #session(C('session.user')['username'], '罗同龙');
+		$user_name = $this->getUserName();
+		session(C('session.user')['username'], $user_name);
     }
     /*
      * 返回json
@@ -65,4 +67,11 @@ class BaseController extends Controller {
             exit(1);
         }
     }
+
+	public function getUserName() {
+		$user_email = session(C('session.user')['email']);
+		$user = M("user");
+		$user_name = $user->where("username='$user_email'")->getField('realname');
+		return $user_name;
+	}
 }
