@@ -44,6 +44,7 @@ return array(
         'user' => array(
             'email' => 'email',
             'username' => 'username',
+            'use_sso' => 'use_sso',
         ),
     ),
     'CAS' => array(
