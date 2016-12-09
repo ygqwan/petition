@@ -17,17 +17,11 @@ class UserModel extends BaseModel {
         parent::__construct();
     }
 
- 	protected $connection = array(
-    	'db_type'  => 'mysql',
-   		'db_user'  => 'domob',
-   	 	'db_pwd'   => 'domob',
-   	 	'db_host'  => 'dbm.office.domob-inc.cn',
-   	 	'db_port'  => '3306',
-   	 	'db_name'  => 'first_blood_user'
-	);	
+ 	protected $connection = 'DB2_USERINFO';
 
     public function stringGetUsernameFromEmail($email) {
-        return "麟"; //FIXME
+		$user_name = $this->where("username='$email'")->getField('realname');
+		return $user_name;
     }
 
 }
