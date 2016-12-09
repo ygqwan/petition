@@ -42,13 +42,13 @@ class UserController extends BaseController {
                 return;
             }
             session(C('session.user')['email'], \phpCAS::getUser());
-            session(C('session.user')['username'], "麟");
+            session(C('session.user')['username'], $this->getUserName());
             session(C('session.user')['use_sso'], true);
         }else{
             //FIXME 登录逻辑
             //FIXME XUEQIAN
             session(C('session.user')['email'], I('post.user_email'));
-            session(C('session.user')['username'], '麟');
+            session(C('session.user')['username'], $this->getUserName());
             session(C('session.user')['use_sso'], false);
         }
         echo $this->json(1, "登录成功", D("Petition")->buildUserInfo()['response']);
@@ -90,6 +90,12 @@ class UserController extends BaseController {
         echo $this->jsonFromModel($res);
     }
 
+	public function getUserName() {
+		$user_email = session(C('session.user')['email']);
+		$user = M("user");
+		$user_name = $user->where("username='$user_email'")->getField('realname');
+		return $user_name;
+	}
 
 
     public function mail() {

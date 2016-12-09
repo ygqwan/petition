@@ -17,8 +17,11 @@ class UserModel extends BaseModel {
         parent::__construct();
     }
 
+ 	protected $connection = 'DB2_USERINFO';
+
     public function stringGetUsernameFromEmail($email) {
-        return "麟"; //FIXME
+		$user_name = $this->where("username='$email'")->getField('realname');
+		return $user_name;
     }
 
 }
