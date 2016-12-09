@@ -12,7 +12,6 @@ use Think\Controller;
 require_once './ThinkPHP/Library/Vendor/phpCAS/source/CAS.php';
 class UserController extends BaseController {
     public function __construct() {
-
         parent::__construct();
     }
 
@@ -52,7 +51,6 @@ class UserController extends BaseController {
             session(C('session.user')['username'], $this->getUserName());
             session(C('session.user')['use_sso'], false);
         }
-
         header("Location:". urldecode(I('get.u')));
         //登录成功后
         //echo $this->json(1, "登录成功", D("Petition")->buildUserInfo()['response']);
@@ -65,6 +63,7 @@ class UserController extends BaseController {
         }
         unset($_SESSION[C('session.user')['email']]);
         unset($_SESSION[C('session.user')['username']]);
+        unset($_SESSION[C('session.user')['use_sso']]);
 
         // Enable debugging
         \phpCAS::setDebug();

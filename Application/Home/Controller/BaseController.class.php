@@ -69,10 +69,10 @@ class BaseController extends Controller {
     }
 
     public function isLogined() {
-        if(session(C('session.user')['email']) == "") {
-            return false;
+        if(session(C('session.user')['email']) != "") {
+            return true;
         }
-        return true;
+        return false;
     }
 
 }
