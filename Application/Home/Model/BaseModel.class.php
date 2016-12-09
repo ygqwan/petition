@@ -49,7 +49,7 @@ class BaseModel extends Model {
                 'user_info' => array(
                     'user_email' => $this->email(),
                     'user_name' => $this->username(),
-                    'is_admin' => false,
+                    'is_admin' => $this->isAdmin(),
                 )
             ));
         }else {
