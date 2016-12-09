@@ -83,6 +83,8 @@ class UserController extends BaseController {
         echo $this->jsonFromModel($res);
     }
 
+
+
     public function mail() {
         $mailinfo = array(
             'from' => 'luotonglong@domob.cn',

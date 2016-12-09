@@ -22,6 +22,9 @@ class BaseModel extends Model {
         }
         return false;
     }
+    public function isAdmin($email) {
+        return false;
+    }
     public function needLogin() {
         if (!$this->isLogined()) {
             header('Content-type: application/json');

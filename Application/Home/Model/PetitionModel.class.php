@@ -165,6 +165,13 @@ class PetitionModel extends BaseModel {
     }
 
     public function buildOnePetitionInfo($dbPetition) {
+
+        $userInfo = array(
+            'user_email' => $dbPetition['owner'],
+            'user_name' => D("user")->stringGetUsernameFromEmail($dbPetition['owner']),
+            'is_admin' => $this->isAdmin($dbPetition['owner']),
+        );
+        $dbPetition['owner'] = $userInfo;
         return array(
             'petition_info' => array(
                 'petition' => $dbPetition,
