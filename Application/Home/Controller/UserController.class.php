@@ -24,6 +24,7 @@ class UserController extends BaseController {
     }
 
     public function login() {
+        //从统一账号体系登录
         if(I('get.sso', 0, 'int')) {
             // Enable debugging
             \phpCAS::setDebug();

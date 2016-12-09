@@ -57,4 +57,19 @@ class PetitionController extends BaseController {
         $res = D("Petition")->history($offset, $pageSize);
         echo $this->jsonFromModel($res);
     }
+
+    public function reply() {
+        $res = D("Petition")->reply(I('post.pid', 0, 'int'), I('post.desc', ''));
+        echo $this->jsonFromModel($res);
+    }
+
+    public function getreply() {
+        $pid = I('get.id', 0, 'int');
+        $reply = D("petition_reply")->where("pid='$pid'")->order("create_time desc")->select();
+        echo $this->json(1, '',
+            array(
+                'reply_list' => $reply,
+                'petition_info' => D("petition")->petition($pid)['response']['petition_info'],
+            ));
+    }
 }

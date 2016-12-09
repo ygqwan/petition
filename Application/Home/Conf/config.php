@@ -5,6 +5,7 @@ const ERR_NO_LOGIN = 102;
 const ERR_NOT_EXISTS_PETITION = 103;
 const ERR_VOTED = 104;
 const ERR_REALNAME = 105;
+const ERR_NO_PERMISSION = 106;
 
 const ERR_PARAM_ERROR = 401;
 const ERR_SERVER_ERROR = 500;
@@ -31,6 +32,7 @@ return array(
         ERR_INVALID_PWD => '错误的邮箱或者密码组合',
         ERR_NO_LOGIN => '用户未登录',
         ERR_NOT_EXISTS_PETITION => '不存在该请愿',
+        ERR_NO_PERMISSION => '您没有权限操作',
         ERR_VOTED => '已经支持过了',
         ERR_PARAM_ERROR => '请求参数错误',
         ERR_SERVER_ERROR => '服务器错误',

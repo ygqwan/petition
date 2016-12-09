@@ -138,6 +138,29 @@ class PetitionModel extends BaseModel {
         }
     }
 
+    public function reply($pid, $desc){
+        $this->needAdmin();
+        if(empty($pid) or !$this->boolExists($pid)){
+            return model_res(ERR_NOT_EXISTS_PETITION);
+        }
+        if(empty($desc)) {
+            return model_res(ERR_PARAM_ERROR);
+        }
+        $reply = array(
+            'pid' => $pid,
+            'user_email' => $this->email(),
+            'desc' => $desc,
+            'create_time' => time(),
+        );
+        $dbReply = M("petition_reply");
+        if($dbReply->create($reply)) {
+            $dbReply->add();
+            return model_res(ERR_SUCCESS);
+        }else{
+            return model_res(-1, $dbReply->getDbError());
+        }
+    }
+
     public function getShouldEmailPetition() {
         $res = M("")->query("SELECT p.id FROM  petition p JOIN ( SELECT v.pid AS pid,count(v.pid) AS cnt FROM vote v GROUP BY v.pid) AS v2 ON v2.pid = p.id WHERE v2.cnt >= p.vote_target");
         $ids = "(";

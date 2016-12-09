@@ -22,14 +22,23 @@ class BaseModel extends Model {
         }
         return false;
     }
-    public function isAdmin($email) {
-        return false;
+    public function isAdmin($email = '') {
+        return true;
     }
     public function needLogin() {
         if (!$this->isLogined()) {
             header('Content-type: application/json');
             echo json_encode(
                 array('status' => ERR_NO_LOGIN, getErr(ERR_NO_LOGIN))
+            );
+            exit();
+        }
+    }
+    public function needAdmin() {
+        if(!$this->isAdmin()) {
+            header('Content-type: application/json');
+            echo json_encode(
+                array('status' => ERR_NO_PERMISSION, getErr(ERR_NO_PERMISSION))
             );
             exit();
         }
