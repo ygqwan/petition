@@ -65,10 +65,13 @@ class PetitionController extends BaseController {
 
     public function getreply() {
         $pid = I('get.id', 0, 'int');
-        $reply = D("petition_reply")->where("pid='$pid'")->order("create_time desc")->select();
+        $replyList = D("petition_reply")->where("pid='$pid'")->order("create_time desc")->select();
+        foreach($replyList as $k => $reply) {
+            $replyList[$k]['user_info'] = D("Petition")->buildUserInfo($reply['user_email'])['response']['user_info'];
+        }
         echo $this->json(1, '',
             array(
-                'reply_list' => $reply,
+                'reply_list' => $replyList,
                 'petition_info' => D("petition")->petition($pid)['response']['petition_info'],
             ));
     }
