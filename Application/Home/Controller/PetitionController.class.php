@@ -59,7 +59,7 @@ class PetitionController extends BaseController {
     }
 
     public function reply() {
-        $res = D("Petition")->reply(I('post.pid', 0, 'int'), I('post.desc', ''));
+        $res = D("Petition")->reply(I('post.id', 0, 'int'), I('post.desc', ''));
         echo $this->jsonFromModel($res);
     }
 
