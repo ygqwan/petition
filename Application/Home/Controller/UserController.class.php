@@ -24,6 +24,10 @@ class UserController extends BaseController {
     }
 
     public function login() {
+        if($this->isLogined()){
+            header("Location:". urldecode(I('get.u')));
+            return;
+        }
         //从统一账号体系登录
         if(I('get.sso', 0, 'int')) {
             // Enable debugging
