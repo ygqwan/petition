@@ -55,9 +55,7 @@ class UserController extends BaseController {
     }
 
     public function logout() {
-        session_destroy();
-        echo $this->json(1);
-        die;
+
         // logout if desired
         if (isset($_REQUEST['logout'])) {
             \phpCAS::logout();
@@ -72,6 +70,9 @@ class UserController extends BaseController {
         \phpCAS::setNoCasServerValidation();
 
         \phpCAS::logout();
+
+        session_destroy();
+        $this->json(1);
     }
 
     public function petition() {

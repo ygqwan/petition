@@ -7,4 +7,5 @@
  */
 return array(
     'cron1_1' => array('mail', 1),
+    'cron_2' => array('sendmail'),
 );
