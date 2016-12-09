@@ -54,6 +54,7 @@ class VoteModel extends BaseModel  {
         }
 
         return $this->where("pid=$pid")->count();
+
     }
 
     public function boolIsFollower($pid, $email = '') {

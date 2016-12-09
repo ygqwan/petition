@@ -177,8 +177,8 @@ class PetitionModel extends BaseModel {
                 'petition' => $dbPetition,
                 'is_mine' => $dbPetition->owner === session(C('session.user')['email']),
                 'is_follower' => D("Vote")->boolIsFollower($dbPetition->pid, $dbPetition->user_email),
-                'expire_time_left' => 7,//FIXME
-                'vote_number_left' => 12, //FIXME
+                'expire_time_left' => $dbPetition['end_time'] - time() > 0 ? $dbPetition['end_time'] - time() : 0,
+                'voted_number' => D('vote')->votedCnt($dbPetition['id']),
             ),
         );
     }
