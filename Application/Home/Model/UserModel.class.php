@@ -17,6 +17,15 @@ class UserModel extends BaseModel {
         parent::__construct();
     }
 
+ 	protected $connection = array(
+    	'db_type'  => 'mysql',
+   		'db_user'  => 'domob',
+   	 	'db_pwd'   => 'domob',
+   	 	'db_host'  => 'dbm.office.domob-inc.cn',
+   	 	'db_port'  => '3306',
+   	 	'db_name'  => 'first_blood_user'
+	);	
+
     public function stringGetUsernameFromEmail($email) {
         return "麟"; //FIXME
     }
