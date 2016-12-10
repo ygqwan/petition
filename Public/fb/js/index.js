@@ -240,10 +240,11 @@ $(".info-support,.info-title").live('click',function(){
 	$.getJSON(basePath+"/user/info/?", function(data){
 	    console.log(data);
 	    if (data.status == 1) {
-	    	var is_follower = _this.parent().attr("d-class");
+	    	var is_follower = _this.parent().children("span").eq(2).attr("d-class");
 			if (is_follower == "true") {
 				$(".sure-name").text("已签字");
-				$(".sure-name").removeAttr('onclick');
+				$(".sure-name").addClass("disableStatus");
+				$(".sure-name").removeClass("sure-name");
 			};
 			var currentId = _this.parent().attr("d-class");
 			console.log($(this))
@@ -271,7 +272,7 @@ $(".info-support,.info-title").live('click',function(){
 					$(".question p").text(obj.desc);
 					$(".progress-bar").css("width",voteprecent);
 				} else{
-					alert(data.message);
+					//alert(data.message);
 				}
 		  	});
 
