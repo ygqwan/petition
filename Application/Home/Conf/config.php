@@ -72,4 +72,6 @@ return array(
     ),
     'default_vote_target' => 30,
     'default_delay' => 15,
+	'vote_target_email_desc' =>'该问题已投满，请您处理',
+	'reply_desc' =>'该问题已处理，请您关注',
 );
