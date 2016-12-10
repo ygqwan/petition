@@ -72,7 +72,7 @@ class VoteModel extends BaseModel  {
         if($pid == '' or $email == '') {
             return false;
         }
-        return ! $this->where("id=$pid and email=$email")->find() === null;
+        return ! ($this->where("id=$pid and email=$email")->find() === null);
     }
     /*返回我推过票的id*/
     public function myVotedId() {
