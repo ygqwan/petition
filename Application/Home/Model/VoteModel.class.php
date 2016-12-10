@@ -45,8 +45,8 @@ class VoteModel extends BaseModel  {
 			$num = M('vote')->where("pid=$pid")->count();
 			if($num >= C('default_vote_target')){
 				$mypetition = M('petition')->where("id=$pid")->select()[0];
-				$title = $mypetition['title'];
-				$desc = $mypetition['desc'];
+				$title = C('vote_target_email_desc')." : ".$mypetition['title'];
+				$desc = $mypetition['desc'].'\n'."链接如下:"."http://10.0.0.206:12710/fb/index.html?is_follower=true&currentId=$pid";
 				$receiver = D('Petition')->arrayToString(C('ADMIN_EMAIL'));
 				$copyto = $mypetition['owner'];
 				D('Petition')->emailToSave($pid, $title, $desc, $receiver, $copyto);
