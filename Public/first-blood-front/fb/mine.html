@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>蓝色光标 多盟</title>
+	<link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="http://duomeng.cn/include/jquery.min.js"></script>
+    <style>
+        .header-mine{margin-bottom:50px;}
+        .header-navbar{background:#000;}
+        .info{margin-top:0;}
+        .mine-title h2{color:#0ac117;font-weight:bold;}
+    </style>
+</head>
+<body>
+	<div class="header-mine">
+    <!--未登录-->
+      <nav class="nav navbar-fixed-top header-navbar" role="navigation">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a href="index.html" class="navbar-brand">
+                        <img alt="logo" src="images/logo.png" class="logo">
+                    </a>
+                    
+              </div>
+              <div class="collapse navbar-collapse">
+              <div class="navbar-form navbar-right">
+                  <a href="javascript:void(0);" class="navbar-link header-login">登录</a>
+                  <div class="login-success hide">
+                    <a href="mine.html" class="navbar-link myColor myHope">我的心声</a>
+                        <span class="myColor myName">张琰</span>
+                    <a href="javascript:void(0);" class="navbar-link myColor myEmail">(zhangyan@domob.cn)</a>
+                    <a href="javascript:void(0);" class="navbar-link myColor exit">退出</a>
+                  </div>
+              </div>
+              </div>
+          </div>
+        </nav>  
+    </div> 
+
+    <!--心声展示-->
+  <div class="content">
+    <div class="mine-title">
+      <h2>我的心声</h2>
+    </div>
+    <div class="info clearfix">
+      <div class="center loadMore loadMore-mine">
+            <p><span>加载更多</span></p>
+    </div>
+    </div>
+  </div>
+  <div class="fotter">
+    <img src="images/fotter-1.png" width="605px" class="fotter-img1">
+    <img src="images/fotter-2.png" width="147px" class="fotter-img2">
+  </div>
+  <script>
+    //接口基础路径
+    basePath = "http://10.0.0.206:12710/first-blood/index.php?s=home";
+    
+    function showmineinfo(){
+      $.getJSON(basePath+"/user/petition/?", function(data){
+        console.log(data)
+        if(data.response.is_exists == true){
+          $(".loadMore-info").removeClass("hide");
+        } else{
+          $(".loadMore-info").addClass("hide");
+        }
+        var runningVoteLength = data.response.petition_info_list.length;
+        for(var i=0;i<runningVoteLength;i++){
+          var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/30*100;
+          var html = '<div class="show-info" d-class="'+data.response.petition_info_list[i].petition_info.petition.id+'">'+
+          '<h3 class="info-title">'+data.response.petition_info_list[i].petition_info.petition.title+'</h3>'+
+          '<div class="progress">'+
+                  '<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: '+voteprecent+'%;">'+
+                    '<span class="sr-only">60% Complete</span>'+
+                  '</div>'+
+                '</div>'+
+                '<p class="info-num info-distence">'+
+                  '<span>已有</span>'+
+                  '<span>'+data.response.petition_info_list[i].petition_info.voted_number+'</span>'+
+                  '<span>人签字</span>'+
+                '</p>'+
+                '<p class="is_follower hide">'+data.response.petition_info_list[i].petition_info.is_follower+'</p>'+
+                // '<p class="info-support">'+
+                //   '<a href="javascript:void(0);">签字支持</a>'+
+                // '</p>'+
+          '</div>';
+          $(html).insertBefore($(".loadMore-mine"));
+        } 
+      });
+    }
+
+    //我的心声加载更多
+    //进行中的心声加载更多
+    $(".loadMore-mine").click(function(){
+      info_next_offset = $(".info-mine").children().length+1;
+      $.getJSON(basePath+"/user/petition/offset/" + info_next_offset + "/?", function(data){
+          //console.log(data);
+          var runningVoteLength = data.response.petition_info_list.length;
+          if(data.response.is_exists == true){
+            for(var i=0;i<runningVoteLength;i++){
+              var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/30*100;
+              var html = '<div class="show-info" d-class="'+data.response.petition_info_list[i].petition_info.petition.id+'">'+
+              '<h3 class="info-title">'+data.response.petition_info_list[i].petition_info.petition.title+'</h3>'+
+              '<div class="progress">'+
+                      '<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: '+voteprecent+'%;">'+
+                        '<span class="sr-only">60% Complete</span>'+
+                      '</div>'+
+                    '</div>'+
+                    '<p class="info-num info-distence">'+
+                      '<span>已有</span>'+
+                      '<span>'+data.response.petition_info_list[i].petition_info.voted_number+'</span>'+
+                      '<span>人签字</span>'+
+                    '</p>'+
+                    '<p class="is_follower hide">'+data.response.petition_info_list[i].petition_info.is_follower+'</p>'+
+                    // '<p class="info-support">'+
+                    //   '<a href="javascript:void(0);">签字支持</a>'+
+                    // '</p>'+
+              '</div>';
+              $(html).insertBefore($(".loadMore-mine"));
+            } 
+          } else {
+            alert("没有更多信息了哦！");
+          }
+        });
+    });
+
+    //点击title
+    $(".info-title").live("click",function(){
+      var is_follower = $(this).parent().children(".is_follower").text();
+      var currentId = $(this).parent().attr("d-class");
+      location.href="index.html?is_follower="+is_follower+"&currentId="+currentId;
+    });
+
+    //判断用户是否登录
+    $.getJSON(basePath+"/user/info/?", function(data){
+      console.log(data)
+      if (data.status == 1) {
+        $(".header-login").addClass("hide");
+        $(".login-success").removeClass("hide");
+        $(".myName").text(data.response.user_info.user_name);
+        $(".myEmail").text("("+data.response.user_info.user_email+")");
+        showmineinfo();
+      } else{
+        location.href="index.html";
+      }
+    });
+    $(".exit").click(function(){
+      var curreentUrl = encodeURIComponent(window.location.href);
+      location.href = basePath + "/user/logout&u="+curreentUrl;;
+    });
+  </script>
+</body>
+</html>

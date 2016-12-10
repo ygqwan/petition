@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>蓝色光标 多盟</title>
+	<link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="http://duomeng.cn/include/jquery.min.js"></script>
+</head>
+<body>
+	<div class="header">
+        <div class="circle">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <img src="images/header-title.png" class="header-title">
+            <a href="javascript:void(0);" class="header-btn">发出我的心声</a> 
+        </div>
+        
+		<!--未登录-->
+		<nav class="nav navbar-fixed-top header-navbar" role="navigation">
+		    <div class="container-fluid">
+		        <div class="navbar-header">
+		            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		            <a href="index.html" class="navbar-brand">
+                    <img alt="logo" src="images/logo.png" class="logo">
+                </a>
+		        </div>
+		        <div class="collapse navbar-collapse">
+		        <div class="navbar-form navbar-right">
+		            <a href="javascript:void(0);" class="navbar-link header-login">登录</a>
+		            <div class="login-success hide">
+		            	<a href="mine.html" class="navbar-link myColor myHope">我的心声</a>
+                        <span class="myColor myName"></span>
+		            	<a href="javascript:void(0);" class="navbar-link myColor myEmail"></a>
+		            	<a href="javascript:void(0);" class="navbar-link myColor exit">退出</a>
+		            </div>
+		        </div>
+		        </div>
+		    </div>
+    	</nav>  
+	</div>
+	
+	<!--发布心声-->
+    <div class="send-imassge hide">
+        <a href="javascript:void(0);" class="close"></a>
+        <ul class="nav nav-pills" role="tablist" id="myTab">
+          <li role="presentation" class="send-first">
+            <div href="#show-first" class="showFirst">
+                <p>填写内容</p>
+                <p class="show-border-bottom">
+                  <img src="images/status1.png" width="180px" class="cont-status" />
+                </p>
+            </div>
+          </li>
+          <li role="presentation" class="send-second">
+                <div href="#show-second" class="showSecond">
+                  <p>预 览</p>
+                  <p class="show-border-bottom">
+                      <img src="images/status2.png" width="180px" class="preview-status" />
+                  </p>
+                </div>
+          </li>
+        </ul>
+        <div class="tab-content">
+            <div id="show-first">
+                <form role="form" class=" send-form">
+                  <div class="form-group form-inline">
+                    <input type="text" class="send-edit send-edit-title" maxlength="40" placeholder="请确保你的标题简洁有力，清晰地传达你想达到的目的">
+                    <p  class="send-dec">标题不能超过40个字</p>
+                  </div>
+                  <div class="form-group form-inline send-group">
+                    <textarea class="send-edit send-edit-dec" rows="3" maxlength="200" style="height:120px;padding-top:8px;" placeholder="解释为什么你的这个心声重要，以及它可能影响到哪些人"></textarea>
+                    <p class="send-dec" style="margin-top:5px;">描述文字不能超过200个字</p>
+                  </div>
+                </form>
+                <div class="">
+                  <a href="javascript:void(0);" class="btnCommon send-next">下一步</a>
+                </div>
+            </div>
+            
+            <div id="show-second" class="hide">
+                <h2 class="send-sec-title center"></h2>
+                <p class="sure-sponsor center"><span></span><span>发起于</span><span></span></p>
+                <p class="send-sec-dec center"></p>
+                <div class="center send-btn clearfix">
+                  <a href="javascript:void(0);" class="btnCommon send-sec-btn send-back">返回编辑</a>
+                  <a href="javascript:void(0);" class="btnCommon send-sec-btn send-print">发布</a>
+                </div>
+            </div>
+        </div>
+        <div class="send-fin hide">
+            <p class="fin-img">
+                <img src="images/success.png" class="img-responsive center-block" width="150px" />
+                <p class="center parth1">谢谢你发出心声：</p>
+                <h1 class="center parth2">希望把公司网络认真改善下！</h1>
+                <p class="center">帮助心声达到目标，分享给其他人：</p>
+                <p class="center fin-url">URL：<span>http://10.0.0.206:12710/fb/index.html</span><a href="javascript:void(0);" class="fin-copy">复制</span></a>
+                <textarea id="copyCont" cols="30" rows="10" readonly="readonly" style="position:absolute;top:38%;left:39%;z-index:-1;opacity:0;">http://10.0.0.206:12710/fb/index.html</textarea>
+                <!-- <div class="">
+                    <a href="javascript:void(0);" class="btnCommon go-index">返回首页</a>
+                </div> -->
+            </p>
+        </div>
+    </div>
+
+	<!--心声展示-->
+	<div class="content">
+		<div class="title center">
+            <img src="images/pen.png" width="42px" />
+			<h2>签字支持他人的心声</h2>
+			<p class="tit-state">在这些心声中添加你的名字，帮助他们达到30的签字支持，即可发送给HR进行处理。</p>
+			<a href="javascript:void(0);" class="tit-history">查看历史心声</a>
+            <p class="tit-underLine">
+                <span></span>
+            </p>
+		</div>
+		<div class="info clearfix">
+        <div class="center loadMore loadMore-info" style="float:left">
+            <p><span>加载更多</span></p>
+        </div>
+		</div>
+
+		<div class="info-history clearfix hide">
+        <div class="center loadMore loadMore-history">
+            <p><span>加载更多</span></p>
+        </div>
+		</div>
+	</div>
+	<div class="fotter">
+		<img src="images/fotter-1.png" width="605px" class="fotter-img1">
+		<img src="images/fotter-2.png" width="147px" class="fotter-img2">
+	</div>
+
+    <!--确认签名-->
+    <div class="bg-sign hide"></div>
+    <div class="sure-sign hide">
+        <a href="javascript:void(0);" class="close"></a>
+        <h2 class="sure-title center"></h2>
+        <p class="sure-sponsor center"><span></span><span>发起于</span><span></span></p>
+        <p class="center sure-num">还需要<span></span>个在<span></span>日前的签字才能得到HR回应</p>
+        <div class="row clearfix sure-row">
+            <div class="col-md-9 col-sm-9 sure-col clearfix">
+                <div class="cus-cont-left col-md-10 col-sm-10">
+                    <div class="progress" style="width:83%">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+                        <span class="sr-only">60% Complete</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 col-sm-4 col-md-offset-4 sure-people">已有<span>23</span>人签字</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="question center">
+          <p></p>
+        </div>
+        <form class="form-horizontal" role="form">
+           <div class="form-group cus-group">
+            <div class="input-group col-sm-offset-4 col-sm-4">
+              <div class="input-group-addon">
+                <img src="images/pen2.png" width="13px" />
+              </div>
+              <input class="form-control nameInput" type="email" placeholder="你的名字">
+            </div>
+          </div>
+          <div class="form-group cus-group">
+            <div class="">
+              <a href="javascript:void(0);" class="btnCommon sure-name">确认签字</a>
+            </div>
+          </div>
+        </form>
+    </div>
+
+    <!--完成签字-->
+    <div class="bg-fin hide"></div>
+    <div class="fin-sign hide">
+        <a href="javascript:void(0);" class="close"></a>
+        <p class="fin-img">
+            <img src="images/success.png" class="img-responsive center-block" width="150px" />
+            <p class="center parth1">你已成功支持下方的心声，你的签名已得到确认。</p>
+            <h1 class="center parth2"></h1>
+            <p class="center parth1">帮助心声达成目标，分享给更多人！</p>
+            <p class="center fin-url parth1">URL：<span>http://10.0.0.206:12710/fb/index.html</span><a href="javascript:void(0);" class="fin-copy">复制</span></a>
+            <textarea id="copyCont" cols="30" rows="10" readonly="readonly" style="position:absolute;top:38%;left:39%;z-index:-1;opacity:0;">http://10.0.0.206:12710/fb/index.html</textarea>
+        </p>
+    </div>
+
+    <!--管理员回应-->
+    <div class="admin-send-imassge hide">
+        <a href="javascript:void(0);" class="close"></a>
+        <ul class="nav nav-pills admin-tab" role="tablist">
+          <li role="presentation" class="send-first">
+            <div href="#show-first" class="showFirst">
+                <p>填写内容</p>
+                <p class="show-border-bottom">
+                    <img src="images/status1.png" width="180px" class="cont-status"/>
+                </p>
+            </div>
+          </li>
+          <li role="presentation" class="send-second">
+                <div href="#show-second" class="showSecond">
+                  <p>预 览</p>
+                  <p class="show-border-bottom">
+                      <img src="images/status2.png" width="180px" class="preview-status" />
+                  </p>
+                </div>
+          </li>
+        </ul>
+        <div class="tab-content">
+            <div id="admin-show-first">
+                <form role="form" class=" send-form">
+                  <div class="form-group form-inline send-group">
+                    <textarea class="send-edit admin-edit-dec" rows="3" maxlength="200" style="height:200px;padding-top:8px;" placeholder="回应针对这个心声我们的态度，以及我们会采取的活动及时间上的承诺"></textarea>
+                  </div>
+                </form>
+                <div class="">
+                  <a href="javascript:void(0);" class="btnCommon admin-next">下一步</a>
+                </div>
+            </div>
+            
+            <div id="admin-show-second" class="hide">
+                <h2 class="send-sec-title center"><span>关于“</span><span></span><span>”的回应</span></h2>
+                <p class="sure-sponsor center"><span></span><span>发起于</span><span></span></p>
+                <p class="send-sec-dec center"></p>
+                <div class="center send-btn">
+                  <a href="javascript:void(0);" class="send-sec-btn admin-back">返回编辑</a>
+                  <a href="javascript:void(0);" class="btnCommon send-sec-btn admin-print">发布</a>
+                </div>
+            </div>
+        </div>
+        <div class="admin-send-fin hide">
+            <p class="fin-img">
+                <img src="images/success.png" class="img-responsive center-block" width="150px" />
+                <p class="center parth1">谢谢你及时回应心声：</p>
+                <h1 class="center parth2"></h1>
+                <p class="center">帮助心声达到目标，分享给其他人：</p>
+                <p class="center fin-url">URL：<span>http://10.0.0.206:12710/fb/index.html</span><a href="javascript:void(0);" class="fin-copy">复制</span></a>
+                <textarea id="copyCont" cols="30" rows="10" readonly="readonly" style="position:absolute;top:38%;left:39%;z-index:-1;opacity:0;">http://10.0.0.206:12710/fb/index.html</textarea>
+                <!-- <div class="">
+                  <a href="javascript:void(0);" class="btnCommon go-index">返回首页</a>
+                </div> -->
+            </p>
+        </div>
+    </div>
+
+	<!--登录界面-->
+    <div class="bg hide"></div>
+    <div class="cus-login hide">
+        <h2 class="cus-loginName">登录</h2>
+        <form class="form-horizontal cus-form" role="form">
+          <div class="form-group cus-group">
+            <div class="input-group col-sm-offset-2 col-sm-8">
+              <div class="input-group-addon">
+                <img src="images/emailLogo.png" width="16px" />
+              </div>
+              <input class="form-control emaliInput" type="email" placeholder="邮箱">
+            </div>
+          </div>
+          <div class="form-group cus-group">
+            <div class="input-group col-sm-offset-2 col-sm-8">
+              <div class="input-group-addon">
+                <img src="images/pwdLogo.png" width="13px" />
+              </div>
+              <input class="form-control pwdInput" type="password" placeholder="密码">
+            </div>
+          </div>
+          <div class="form-group cus-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <a href="javascript:void(0);" class="btnCommon cus-tijiao">登录</a>
+            </div>
+          </div>
+        </form>
+    </div>
+    <script src="js/index.js"></script>    
+</body>
+</html>

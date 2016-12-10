@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>蓝色光标 多盟</title>
+	<link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+    <style>
+      body{background:#fff;}
+      .sure-response{padding:20px 20px 40px 20px;width:500px;text-align:justify;background:#f2f2f2;line-height:25px;}
+      .result-info-distence{margin-left:20px;color: #666666;font-size: 12px;}
+      .header-navbar{background:#000;}
+      .sure-question{color:#111;}
+      .admin-sign{color:#aaaaaa;}
+      .sign-name,.sign-time{margin-right:15px;}
+      .question-cont{border-bottom:1px #cccccc solid;}
+      .sign-title{text-align:center;font-weight:bold;}
+    </style>
+</head>
+<body>
+    <div class="header-result">
+    <!--未登录-->
+      <nav class="nav navbar-fixed-top header-navbar" role="navigation">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a href="index.html" class="navbar-brand">
+                        <img alt="logo" src="images/logo.png" class="logo">
+                    </a>
+                    
+              </div>
+              <div class="collapse navbar-collapse">
+              <div class="navbar-form navbar-right">
+                  <a href="javascript:void(0);" class="navbar-link header-login">登录</a>
+                  <div class="login-success hide">
+                     <a href="javascript:void(0);" class="navbar-link myColor myHope">我的心声</a>
+                     <span class="myColor myName"></span>
+                     <a href="javascript:void(0);" class="navbar-link myColor myEmail"></a>
+                     <a href="javascript:void(0);" class="navbar-link myColor exit">退出</a>
+                  </div>
+              </div>
+              </div>
+          </div>
+        </nav>  
+    </div> 
+    <center class="content"> 
+      <section class="admin-response">
+          <h2 class="sure-title center"></h2>
+          <p class="sure-sponsor center"><span></span><span>发起于</span><span></span></p>
+          <div class="progress" style="width:30%;height:14px;">
+            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="">
+              <span class="sr-only">60% Complete</span>
+            </div>
+          </div>
+          <p class="result-info-distence">
+            <span>已有</span>
+            <span></span>
+            <span>人签字</span>
+          </p>
+          <div class="ques-dec"></div>
+          <div class="sure-response">
+            <h2 class="sign-title">心声回应</h2>
+          </div>
+      </section>
+    </center>
+    <!--登录界面-->
+    <div class="bg hide"></div>
+    <div class="cus-login hide">
+        <h2 class="cus-loginName">登录</h2>
+        <form class="form-horizontal cus-form" role="form">
+          <div class="form-group cus-group">
+            <div class="input-group col-sm-offset-2 col-sm-8">
+              <div class="input-group-addon">
+                <img src="images/emailLogo.png" width="16px" />
+              </div>
+              <input class="form-control emaliInput" type="email" placeholder="邮箱">
+            </div>
+          </div>
+          <div class="form-group cus-group">
+            <div class="input-group col-sm-offset-2 col-sm-8">
+              <div class="input-group-addon">
+                <img src="images/pwdLogo.png" width="13px" />
+              </div>
+              <input class="form-control emaliInput" type="email" placeholder="密码">
+            </div>
+          </div>
+          <div class="form-group cus-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <a href="javascript:void(0);" class="btnCommon cus-tijiao">登录</a>
+             <!--  <button type="button" class="btn cus-tijiao">Sign in</button> -->
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="fotter">
+      <img src="images/fotter-1.png" width="605px" class="fotter-img1">
+      <img src="images/fotter-2.png" width="147px" class="fotter-img2">
+    </div>
+    <script>
+      //接口基础路径
+      basePath = "http://10.0.0.206:12710/first-blood/index.php?s=home";
+      //判断用户是否登录
+      $.getJSON(basePath+"/user/info/?", function(data){
+        if (data.status == 1) {
+          $(".header-login").addClass("hide");
+          $(".login-success").removeClass("hide");
+          $(".myName").text(data.response.user_info.user_name);
+          $(".myEmail").text("("+data.response.user_info.user_email+")");
+        } else{
+          location.href="index.html";
+        }
+      });
+      $(".exit").click(function(){
+        var curreentUrl = encodeURIComponent(window.location.href);
+        location.href = basePath + "/user/logout&u="+curreentUrl;;
+      });
+      var params = location.search.substring(1).split('&');
+      var things = [];
+      for (var i in params) {
+          _sp = params[i].split('=');
+          things[_sp[0]] = _sp[1];
+      };                                  //表示    things.str;
+      var currentId = things.id;
+      $.getJSON(basePath+"/petition/getreply/id/"+currentId+"/?", function(data){
+        console.log(data);
+        var obj_user = data.response.petition_info.petition;
+        var obj_admin = data.response.reply_list;
+        if (data.status == 1) {
+          var startTime = format(parseInt(obj_user.create_time)*1000);
+          var voteprecent = parseInt(data.response.petition_info.voted_number)/30*100;
+          $(".sure-title").text(obj_user.title);
+          $(".sure-sponsor span").eq(0).text(obj_user.owner.user_name);
+          $(".sure-sponsor span").eq(2).text(startTime);
+          $(".progress-bar").css("width",voteprecent);
+          $(".result-info-distence span").eq(1).text(data.response.petition_info.voted_number);
+          $(".ques-dec").text(obj_user.desc);
+          var adminResponseLength = obj_admin.length;
+          if(adminResponseLength>0){
+            for(var i=0;i<adminResponseLength;i++){
+              var responseTime = format(obj_admin[i].create_time*1000);
+              var responseHour = format2(obj_admin[i].create_time*1000);
+              var html = '<div class="question-cont">'+
+                  obj_admin[i].desc
+                  +'<p class="admin-sign"><span>——</span><span class="sign-name">'+obj_admin[i].user_info.user_name+'</span><span class="sign-time">'+responseTime+'</span><span class="sign-hour">'+responseHour+'</span></p>'+
+              '</div>';
+              $(html).insertAfter($(".sign-title"));
+            }
+          } else{
+            var html = '<p class="center">HR暂时没有做出回应</p>';
+            $(html).insertAfter($(".sign-title"));
+          }
+          
+        };
+      });
+      //时间戳转换为日期
+      function add0(m){return m<10?'0'+m:m }
+      function format(shijianchuo)
+      {
+        //shijianchuo是整数，否则要parseInt转换
+        var time = new Date(shijianchuo);
+        var y = time.getFullYear();
+        var m = time.getMonth()+1;
+        var d = time.getDate();
+        var h = time.getHours();
+        var mm = time.getMinutes();
+        return y+'-'+add0(m)+'-'+add0(d);
+        //return add0(m)+'月'+add0(d)+'日';
+      }
+
+      //时间戳转换为时间
+      function add0(m){return m<10?'0'+m:m }
+      function format2(shijianchuo)
+      {
+        //shijianchuo是整数，否则要parseInt转换
+        var time = new Date(shijianchuo);
+        var y = time.getFullYear();
+        var m = time.getMonth()+1;
+        var d = time.getDate();
+        var h = time.getHours();
+        var mm = time.getMinutes();
+        return add0(h)+':'+add0(mm);
+        //return add0(m)+'月'+add0(d)+'日';
+      }
+    </script>
+</body>
+</html>
