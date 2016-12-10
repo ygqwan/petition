@@ -164,7 +164,8 @@ class PetitionModel extends BaseModel {
 			$copyto = $this->arrayToString(C('ADMIN_EMAIL'));
 			$receiver = $this->arrayToString($myreceiver);
 			$title = $this->where("id=$pid")->getField('title');
-			$desc = $this->where("id=$pid")->getField('desc');
+			$title = C('reply_desc')." : ".$title;
+			$desc = "问题链接 ：http://10.0.0.206:12710/fb/result.html?id=$pid\n";
 			$this->emailToSave($pid, $title, $desc, $receiver, $copyto);
             return model_res(ERR_SUCCESS);
         }else{
