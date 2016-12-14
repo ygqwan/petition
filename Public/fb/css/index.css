@@ -142,7 +142,8 @@ textarea::-webkit-input-placeholder {
 .send-sec-dec{margin:30px auto;width:500px;}
 .send-sec-btn{margin-left:20px;float:left;}
 .send-back{border:1px #e0e0e0 solid;color:#e0e0e0;}
-.send-back:hover{border:1px #005eff solid;color:#005eff;}
+/*.send-back:hover{border:1px #005eff solid;color:#005eff;}*/
+.send-back:hover{border:1px #005eff solid !important;background:#fff !important;color:#005eff !important;text-decoration:none;}
 
 /**发布成功提示**/
 .go-index{margin-left:262px;margin-top:50px;padding:0 0;display:block;border:1px #005eff solid;color:#005eff;}

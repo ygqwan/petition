@@ -103,9 +103,10 @@
       <img src="images/fotter-1.png" width="605px" class="fotter-img1">
       <img src="images/fotter-2.png" width="147px" class="fotter-img2">
     </div>
+    <script src="js/common.js"></script>
     <script>
       //接口基础路径
-      basePath = "http://10.0.0.206:12710/first-blood/index.php?s=home";
+      //basePath = "http://10.0.0.206:12710/first-blood/index.php?s=home";
       //判断用户是否登录
       $.getJSON(basePath+"/user/info/?", function(data){
         if (data.status == 1) {

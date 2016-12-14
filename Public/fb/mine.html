@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/common.js"></script>
     <script type="text/javascript" src="http://duomeng.cn/include/jquery.min.js"></script>
     <style>
         .header-mine{margin-bottom:50px;}
@@ -62,7 +63,7 @@
   </div>
   <script>
     //接口基础路径
-    basePath = "http://10.0.0.206:12710/first-blood/index.php?s=home";
+    //basePath = "http://10.0.0.206:12710/first-blood/index.php?s=home";
     
     function showmineinfo(){
       $.getJSON(basePath+"/user/petition/?", function(data){

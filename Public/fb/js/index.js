@@ -1,7 +1,7 @@
 //接口基础路径
 //basePath = "http://domob-206.domob-inc.cn:12710/first-blood/index.php?s=home";
 //线上接口地址    http://petition.moxz.cn/first-blood/index.php?s=home
-basePath = 'http://10.0.0.206:12710/first-blood/index.php?s=home';
+//basePath = 'http://10.0.0.206:12710/first-blood/index.php?s=home';
 showinfo();
 var info_next_offset,
 	history_next_offset,
@@ -12,7 +12,7 @@ var info_next_offset,
 
 //登录成功获取心愿信息
 function showinfo(){
-	$.getJSON(basePath+"/petition/running/0/?", function(data){
+	$.getJSON(basePath+"/petition/running/offset/0/?", function(data){
       console.log(data);
       var runningVoteLength = data.response.petition_info_list.length;
       if(data.response.is_exists == true){
@@ -21,7 +21,7 @@ function showinfo(){
       	$(".loadMore-info").addClass("hide");
       }
       for(var i=0;i<runningVoteLength;i++){
-      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/30*100;
+      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/50*100;
       	var html = '<div class="show-info" d-class="'+data.response.petition_info_list[i].petition_info.petition.id+'">'+
 			'<h3 class="info-title">'+data.response.petition_info_list[i].petition_info.petition.title+'</h3>'+
 			'<div class="progress">'+
@@ -47,7 +47,7 @@ function showinfo(){
 
 //查看历史心声
 function showinfoHistory(lengthNum){
-	$.getJSON(basePath+"/petition/history/"+lengthNum+"/?", function(data){
+	$.getJSON(basePath+"/petition/history/offset/"+lengthNum+"/?", function(data){
 		console.log(data)
 	  if(data.response.is_exists == true){
       	$(".loadMore-history").removeClass("hide");
@@ -56,7 +56,7 @@ function showinfoHistory(lengthNum){
       }
       var runningVoteLength = data.response.petition_info_list.length;
       for(var i=0;i<runningVoteLength;i++){
-      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/30*100;
+      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/50*100;
       	var html = '<div class="show-info" d-class="'+data.response.petition_info_list[i].petition_info.petition.id+'">'+
 			'<h3 class="info-title">'+data.response.petition_info_list[i].petition_info.petition.title+'</h3>'+
 			'<div class="progress">'+
@@ -101,7 +101,7 @@ $.getJSON(basePath+"/user/info/?", function(data){
 		      	$(".loadMore-info").addClass("hide");
 		      }
 		      for(var i=0;i<runningVoteLength;i++){
-		      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/30*100;
+		      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/50*100;
 		      	var html = '<div class="show-info" d-class="'+data.response.petition_info_list[i].petition_info.petition.id+'">'+
 					'<h3 class="info-title">'+data.response.petition_info_list[i].petition_info.petition.title+'</h3>'+
 					'<div class="progress">'+
@@ -147,7 +147,7 @@ $(".loadMore-info").click(function(){
       if(data.response.is_exists == true){
       	  //$(".loadMore-info").removeClass("hide");
 	      for(var i=0;i<runningVoteLength;i++){
-	      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/30*100;
+	      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/50*100;
 	      	var html = '<div class="show-info" d-class="'+data.response.petition_info_list[i].petition_info.petition.id+'">'+
 				'<h3 class="info-title">'+data.response.petition_info_list[i].petition_info.petition.title+'</h3>'+
 				'<div class="progress">'+
@@ -207,7 +207,7 @@ $(".loadMore-history").click(function(){
       var runningVoteLength = data.response.petition_info_list.length;
       if(data.response.is_exists == true){
 	      for(var i=0;i<runningVoteLength;i++){
-	      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/30*100;
+	      	var voteprecent = parseInt(data.response.petition_info_list[i].petition_info.voted_number)/50*100;
 	      	var html = '<div class="show-info" d-class="'+data.response.petition_info_list[i].petition_info.petition.id+'">'+
 				'<h3 class="info-title">'+data.response.petition_info_list[i].petition_info.petition.title+'</h3>'+
 				'<div class="progress">'+
@@ -236,7 +236,7 @@ $(".loadMore-history").click(function(){
 //签字支持
 var sure_title;
 $(".info-support,.info-title").live('click',function(){
-	var _this = $(".info-support,.info-title");
+        var _this = $(this);
 	$.getJSON(basePath+"/user/info/?", function(data){
 	    console.log(data);
 	    if (data.status == 1) {
@@ -252,7 +252,7 @@ $(".info-support,.info-title").live('click',function(){
 			    //console.log(data);
 			    if (data.status == 1) {
 			    	var obj = data.response.petition_info.petition;
-			    	var voteprecent = parseInt(data.response.petition_info.voted_number)/30*100;
+			    	var voteprecent = parseInt(data.response.petition_info.voted_number)/50*100;
 				    var clientHeight = $(document).height();
 					var scrollTop = $(document).scrollTop();
 					var top = scrollTop +parseInt($(".sure-sign").css("marginTop"));
@@ -261,7 +261,7 @@ $(".info-support,.info-title").live('click',function(){
 					$(".sure-sign").css("marginTop",top+"px").removeClass("hide");
 					var startTime = format(parseInt(obj.create_time)*1000);
 					var endTime = format(parseInt(obj.end_time)*1000);
-					var endPeopleNum = 30-parseInt(data.response.petition_info.voted_number);
+					var endPeopleNum = 50-parseInt(data.response.petition_info.voted_number);
 					$(".sure-title").text(obj.title);
 					sure_title = obj.title;
 					$(".sure-sign .sure-sponsor span").eq(0).text(obj.owner.user_name);
@@ -468,7 +468,7 @@ if(things.is_follower){
 	    console.log(data);
 	    if (data.status == 1) {
 	    	var obj = data.response.petition_info.petition;
-	    	var voteprecent = parseInt(data.response.petition_info.voted_number)/30*100;
+	    	var voteprecent = parseInt(data.response.petition_info.voted_number)/50*100;
 		    var clientHeight = $(document).height();
 			var scrollTop = $(document).scrollTop();
 			var top = scrollTop +parseInt($(".sure-sign").css("marginTop"));
@@ -477,7 +477,7 @@ if(things.is_follower){
 			$(".sure-sign").css("marginTop",top+"px").removeClass("hide");
 			var startTime = format(parseInt(obj.create_time)*1000);
 			var endTime = format(parseInt(obj.end_time)*1000);
-			var endPeopleNum = 30-parseInt(data.response.petition_info.voted_number);
+			var endPeopleNum = 50-parseInt(data.response.petition_info.voted_number);
 			$(".sure-title").text(obj.title);
 			sure_title = obj.title;
 			$(".sure-sign .sure-sponsor span").eq(0).text(obj.owner.user_name);
@@ -556,6 +556,11 @@ $(".close").click(function(){
 		$(".admin-send-imassge").addClass("hide");
 		$(".admin-send-fin").addClass("hide");
 	};
+	if ($(this).parent().attr("class") == "fin-sign") {
+		$(".sure-sign").css("marginTop","-220px");
+		$(this).parent().addClass("hide");
+		$(".sure-sign").addClass("hide");
+	}
 });
 
 //时间戳转换为日期
